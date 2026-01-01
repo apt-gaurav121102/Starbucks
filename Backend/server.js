@@ -1,6 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
+import { Register } from './src/Controllers/AuthController';
 dotenv.config();
 const app =express();
 
@@ -22,6 +23,8 @@ mongoose
 app.get('/',(req,res)=>{
     res.send('Hello')
 })
+
+app.post("/user", Register);
 
 app.listen(PORT,()=>{
     console.log(`Server is listening at ${PORT}`)
