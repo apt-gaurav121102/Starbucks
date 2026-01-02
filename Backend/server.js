@@ -1,12 +1,10 @@
 import express from 'express';
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
-<<<<<<< HEAD
-import { Register } from './src/Controllers/AuthController';
-=======
 import { Register, Login } from './src/Controllers/AuthController.js';
 
->>>>>>> 56a44042e58600281201a99333a5c51c30553286
+import { Register, Login } from './src/Controllers/AuthController.js';
+
 dotenv.config();
 const app =express();
 
@@ -22,8 +20,6 @@ mongoose
   .connect(MONGO_URL)
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.error("MongoDB error:", err));
-
-
 
 app.get('/',(req,res)=>{
     res.send('Hello')
