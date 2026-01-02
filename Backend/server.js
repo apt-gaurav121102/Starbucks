@@ -25,9 +25,9 @@ app.get('/',(req,res)=>{
     res.send('Hello')
 })
 
-app.post("/user", Register);
+app.post("/user/register", Register);
 
-app.post("/login", Login);
+app.post("/user/login", Login);
 
 app.listen(PORT,()=>{
     console.log(`Server is listening at ${PORT}`)
