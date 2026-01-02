@@ -1,7 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
-import { Register } from './src/Controllers/AuthController';
+import { Register } from './src/Controllers/AuthController.js';
 dotenv.config();
 const app =express();
 
