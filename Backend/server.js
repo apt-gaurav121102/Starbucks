@@ -3,8 +3,6 @@ import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 import { Register, Login } from './src/Controllers/AuthController.js';
 
-import { Register, Login } from './src/Controllers/AuthController.js';
-
 dotenv.config();
 const app =express();
 
