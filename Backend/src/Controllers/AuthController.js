@@ -1,5 +1,7 @@
 import User from "../Models/UserSchema.js";
 import bcrypt from "bcryptjs";
+import jwt from 'jsonwebtoken'
+import dotenv from 'dotenv'
 
 export const Register = async (req, res) => {
     try {
@@ -35,3 +37,38 @@ export const Register = async (req, res) => {
         });
     }
 };
+
+
+
+
+export const Login = async (req, res) => {
+
+    try {
+
+        const { email, password } = req.body;
+
+        const user = await User.findOne({ email });
+
+        const isMatch = await bcrypt.compare(password, user.password);
+
+        const Token = jwt.sign({ _id: user._id }, process.env.SECRET_KEY);
+
+        if (!user) {
+            return res.status(401).json({ message: "User does not exist. Please Register" });
+        } else {
+            if (isMatch) {
+
+                return res.status(200).json({ Token, user, message: "Login Successful" });
+            } else {
+                return res.status(400).json({ message: "Invalid Credentials" });
+            }
+        }
+
+
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            message: "Internal Server Error!"
+        });
+    }
+}
