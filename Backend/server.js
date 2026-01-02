@@ -1,7 +1,8 @@
 import express from 'express';
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
-import { Register } from './src/Controllers/AuthController';
+import { Register, Login } from './src/Controllers/AuthController.js';
+
 dotenv.config();
 const app =express();
 
@@ -25,6 +26,8 @@ app.get('/',(req,res)=>{
 })
 
 app.post("/user", Register);
+
+app.post("/login", Login);
 
 app.listen(PORT,()=>{
     console.log(`Server is listening at ${PORT}`)
